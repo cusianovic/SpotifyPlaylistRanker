@@ -1,10 +1,18 @@
 const express = require('express');
 const db = require('./util/connectToDB.js')
+const cors = require('cors')
 const app = express();
 
 const upload = require('./routes/upload');
 
 const { auth } = require('express-openid-connect');
+
+let corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 
+}
+
+app.use(cors(corsOptions));
 
 const config = {
   authRequired: false,
@@ -27,4 +35,4 @@ const postgre = db();
 app.use(express.json())
 app.use('/api', upload(postgre));
 
-app.listen(3000);
+app.listen(3001);
