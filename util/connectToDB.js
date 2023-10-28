@@ -1,8 +1,8 @@
 const { Client } = require("pg");
 
 
-async function DB(){
-    client = new Client("postgresql://user:REVEAL_PASSWORD@scaled-climber-3678.g95.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full");
+function DB(lambda){
+    const client = new Client("postgresql://user:FhUyHFbJ5tY8vOfLFsGPAg@scaled-climber-3678.g95.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full");
 
     (async () => {
         await client.connect();
@@ -11,8 +11,6 @@ async function DB(){
         console.log(results);
     } catch (err) {
         console.error("error executing query:", err);
-    } finally {
-        client.end();
     }
     })();
 
