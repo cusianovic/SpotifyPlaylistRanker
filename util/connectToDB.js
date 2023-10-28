@@ -1,8 +1,7 @@
 const { Client } = require("pg");
 
-
-function DB(lambda){
-    const client = new Client("postgresql://user:FhUyHFbJ5tY8vOfLFsGPAg@scaled-climber-3678.g95.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full");
+function DB(SECRET){
+    const client = new Client(`${SECRET}`);
 
     (async () => {
         await client.connect();
